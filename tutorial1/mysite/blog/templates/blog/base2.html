@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>git gud</title>
+</head>
+<body>
+<header>
+<h1>Postlist</h1>
+<a href="/blog/create_blog">Add Post</a>
+<hr>
+</header>
+<ul>
+	{% for post in posts %}
+	<li>Title: {{post.title}} <br> 
+	Author: {{post.author}} <br>
+	Text: {{post.body}} <br><br>	
+	</li>
+	{% endfor %}
+</ul>
+</body>
+</html>

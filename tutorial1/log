@@ -1,0 +1,39 @@
+    1  python
+    2  pip
+    3  sudo apt install python-pip
+    4  sudo apt install virtualenv
+    5  sudo apt-get update
+    6  firefox 
+    7  virtualenv
+    8  virtualenv django1
+    9  ls
+   10  cd django1
+   11  ls
+   12  source bin/activate
+   13  deactivate
+   14  source bin/activate
+   15  ls lib
+   16  ls lib/python2.7
+   17  ls lib/python2.7/site-packages/
+   18  pip install django==1.8
+   19  ls
+   20  ls lib
+   21  ls
+   22  ls lib/python2.7
+   23  ls lib/python2.7/site-packages/
+   24  python
+   25  deactivate
+   26  python
+   27  source django1/bin/activate
+   28  ls
+   29  source bin/activate
+   30  env
+   31  ls
+   32  mkdir tutorial1
+   33  ls
+   34  cd tutorial1
+   35  ls
+   36  django-admin.py startproject mysite
+   37  ls
+   38  history
+   39  history > log

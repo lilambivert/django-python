@@ -1,0 +1,26 @@
+{% extends 'partials/base_generic.html' %}
+
+{% block content %}
+<h1>
+Submit new blog post
+</h1>
+<form action="{% url 'create_blog' %}" method="post">
+{% csrf_token %}
+  <label for="title">Title</label><br />
+  <input type="text" name="title" id="title" />
+  <br>
+  <label for="author">Author</label><br/>
+  <select id="author" name="author">
+	{% for user in users %}
+	<option value={{user.id}}>
+	<li>{{user.username}} </li>
+	</option>
+{% endfor %}
+  </select>
+  <br> 
+  <label for="body">Text</label><br />
+  <textarea name="body" id="body"></textarea>
+  <br><br>
+  <input type="submit" value="Submit" />
+</form>
+{% endblock %}

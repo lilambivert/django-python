@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>git gud</title>
+	</head>
+	<body>
+	<nav>
+		<ul>
+			<li>
+				 <form class="logout-link" action="/accounts/logout/" method="post"> {% csrf_token %}
+					<button type="submit">Logout</button>
+				</form> 
+			</li>
+		</ul>
+	</nav>
+	<div>
+	{% block content %}
+	{% endblock %}
+	</div>
+	</body>
+</html>
