@@ -26,3 +26,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    blog = models.ForeignKey(Post, related_name='blog')
+
+    def __str__(self):
+        return self.text

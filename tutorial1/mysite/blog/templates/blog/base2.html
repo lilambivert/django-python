@@ -14,10 +14,10 @@
 </header>
 <ul>
 	{% for post in posts %}
-	<li>Title: {{post.title}} <br> 
-	Author: {{post.author}} <br>
-	Text: {{post.body}} <br><br>	
-	</li>
+	<li>
+		<a href="/blog/details/{{post.id}}">Title: {{post.title}}</a> <br>	
+			Author: {{post.author}} <br> 
+			Text: {{post.body}}</li> <br>
 	{% endfor %}
 </ul>
 </body>

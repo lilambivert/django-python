@@ -34,6 +34,6 @@ def logout_view(request):
 		return redirect('blog/post/')
 		#return HttpResponseRedirect(settings.LOGIN_URL)	
 	else:
-		print request.method
-		print "hello get"
+		#print request.method
+		#print "hello get"
 		return redirect('blog/create_blog')

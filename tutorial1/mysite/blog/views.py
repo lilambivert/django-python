@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
-#from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
-#from django.contrib. import auth
-#from django.http import HttpResponseRedirect
-#from django.core.context_processors import csrf
 from .models import Post
+from django.contrib.auth.decorators import login_required
 
+#Lists the 5 most recent posts
 def post_list(request):
-	posts = Post.objects.all()[:10]
+	posts = Post.objects.all()[:5]
 
 	context = {
 		'posts':posts
@@ -15,6 +13,7 @@ def post_list(request):
 
 	return render(request, 'blog/base2.html', context)
 
+@login_required
 def create_blog(request):
 
 	if(request.method == 'POST'):
@@ -35,3 +34,8 @@ def create_blog(request):
 		}
 
 		return render(request, 'blog/blogpost.html', users)
+
+def blog_detail(request, title):
+	blog = Post.objects.get(id=title)
+	return render(request, 'blog/blog_details.html', {'blog':blog}) 
+
