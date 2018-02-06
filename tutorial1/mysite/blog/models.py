@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-# Create your models here.
 from django.utils.encoding import python_2_unicode_compatible
 
 @python_2_unicode_compatible  # only if you need to support Python 2
@@ -29,7 +28,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+    time_of_comment = models.DateTimeField(default=timezone.now)
     blog = models.ForeignKey(Post, related_name='blog')
 
     def __str__(self):

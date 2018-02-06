@@ -2,3 +2,7 @@
 Learned how to handle post and get methods, and how they work
 Spent some time learning and figuring out how to use multiple apps under one project, and the different URLs
 Also tried to use print statements to figure out if the user was logged in, so I got some broader knowledge about print aswell
+
+1 Feb 2018
+Had some issues with indents and spaces and learned that python was very space/indent sensitive
+Learned some more about new models and creating forms
