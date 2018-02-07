@@ -1,5 +1,5 @@
-from django import forms
-#from .forms import CommentForm
+#from django import forms
+from .forms import CommentForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .models import Post, Comment
