@@ -13,7 +13,7 @@ def signup_view(request):
 			user.backend = 'django.contrib.auth.backends.ModelBackend'
 			login(request, user)
 			return redirect('blog/create_blog')
-	else: 
+	else:
 		form = UserCreationForm()
 	return render(request, 'accounts/signup.html', {'form':form})
 
@@ -31,9 +31,6 @@ def login_view(request):
 def logout_view(request):
 	if request.method == 'POST':
 		logout(request)
-		return redirect('blog/post/')
-		#return HttpResponseRedirect(settings.LOGIN_URL)	
+		return redirect('/blog/post')
 	else:
-		#print request.method
-		#print "hello get"
-		return redirect('blog/create_blog')
+		return redirect('/blog/create_blog')

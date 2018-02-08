@@ -20,7 +20,7 @@ def post_list(request):
 def create_blog(request):
 
     if(request.method == 'POST'):
-        print "request.POST", request.POST
+#        print "request.POST", request.POST
         title = request.POST['title']
         author = request.POST['author']
         body = request.POST['body']
@@ -30,7 +30,7 @@ def create_blog(request):
 
         return redirect('/blog/post')
     else:
-        print "request.user", request.user.id
+#        print "request.user", request.user.id
         userslist = User.objects.all()
         users = {
             'users':userslist
