@@ -19,8 +19,10 @@
 
 {% for comment in comments %}
     <div class="comment">
-        <div class="date">{{ comment.time_of_comment }}</div>
-        <p>{{ comment.text }}</p> <br>
+        <div class="date">Comment by {{ comment.name }} <br>
+				{{ comment.time_of_comment }}
+        <p>{{ comment.text }}</p></div>
+
     </div>
 {% empty %}
     <p>No comments here yet :(</p>

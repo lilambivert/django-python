@@ -18,9 +18,7 @@ def post_list(request):
 
 @login_required
 def create_blog(request):
-
     if(request.method == 'POST'):
-#        print "request.POST", request.POST
         title = request.POST['title']
         author = request.POST['author']
         body = request.POST['body']
@@ -30,7 +28,6 @@ def create_blog(request):
 
         return redirect('/blog/post')
     else:
-#        print "request.user", request.user.id
         userslist = User.objects.all()
         users = {
             'users':userslist
@@ -48,7 +45,7 @@ def blog_detail(request, id):
         if formz.is_valid():
             comment = formz.save(commit=False)
             comment.blog = blog
-#            comment.post_id=id
+            comment.post = request.user.get_username()
             comment.save()
             return redirect('blog/post')
     else:

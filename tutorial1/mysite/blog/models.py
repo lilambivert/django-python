@@ -30,6 +30,7 @@ class Comment(models.Model):
     text = models.CharField(max_length=200)
     time_of_comment = models.DateTimeField(default=timezone.now)
     blog = models.ForeignKey(Post, related_name='blog')
+    name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.text
+        return 'Comment by {} on {}'.format(self.name, self.blog)
