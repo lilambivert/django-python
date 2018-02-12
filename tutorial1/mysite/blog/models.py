@@ -27,7 +27,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    text = models.TextField()
+    text = models.CharField(max_length=200)
     time_of_comment = models.DateTimeField(default=timezone.now)
     blog = models.ForeignKey(Post, related_name='blog')
 

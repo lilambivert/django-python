@@ -24,7 +24,7 @@ def create_blog(request):
         title = request.POST['title']
         author = request.POST['author']
         body = request.POST['body']
-        q = User.objects.get(id=int(author))			
+        q = User.objects.get(id=int(author))
         post = Post(title=title, author=q, body=body)
         post.save()
 
@@ -41,17 +41,16 @@ def create_blog(request):
 def blog_detail(request, id):
     blog = Post.objects.get(id=id)
     comments = Comment.objects.filter(blog=blog)
-    return render(request, 'blog/blog_details.html', {'blog':blog, 'comments':comments})	
 
-def add_comment(request, id):
     post = get_object_or_404(Post, id=id)
     if(request.method == 'POST'):
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
+        formz = CommentForm(request.POST)
+        if formz.is_valid():
+            comment = formz.save(commit=False)
+            comment.blog = blog
+#            comment.post_id=id
             comment.save()
             return redirect('blog/post')
     else:
-        form = CommentForm()
-    return render(request, 'blog/add_comment.html', {'form' : form})
+        formz = CommentForm()
+    return render(request, 'blog/blog_details.html', {'blog':blog, 'comments':comments, 'formz' : formz})

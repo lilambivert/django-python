@@ -4,7 +4,6 @@ from django.contrib.auth import login, logout
 from django.http import HttpResponseRedirect
 from mysite import settings
 
-# Create your views here.
 def signup_view(request):
 	if request.method == 'POST':
 		form = UserCreationForm(request.POST)
@@ -12,7 +11,7 @@ def signup_view(request):
 			user = form.save()
 			user.backend = 'django.contrib.auth.backends.ModelBackend'
 			login(request, user)
-			return redirect('blog/create_blog')
+			return redirect('/blog/create_blog')
 	else:
 		form = UserCreationForm()
 	return render(request, 'accounts/signup.html', {'form':form})
@@ -23,7 +22,7 @@ def login_view(request):
 		if form.is_valid():
 			user = form.get_user()
 			login(request, user)
-			return redirect('blog/create_blog')
+			return redirect('/blog/create_blog')
 	else:
 		form = AuthenticationForm()
 	return render(request, 'accounts/login.html', {'form':form})

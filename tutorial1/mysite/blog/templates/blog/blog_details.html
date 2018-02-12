@@ -16,16 +16,27 @@
 	</div>
 </div>
 <hr>
-{% for comment in post.comments.all %}
+
+{% for comment in comments %}
     <div class="comment">
-        <div class="date">{{ comment.created_date }}</div>
-        <p>{{ comment.text|linebreaks }}</p>
+        <div class="date">{{ comment.time_of_comment }}</div>
+        <p>{{ comment.text }}</p> <br>
     </div>
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
 
- <a class="btn btn-default" href="/blog/details/{{post.id}}">Add comment</a>
+{% if comment %}
+	<h3>added</h3>
+	{% else %}
+    <h2>New comment</h2>
+    <form action="." method="post">
+        {{ formz.as_p }}
+				{% csrf_token %}
+        <p><input type="submit" value="Add comment"></p>
+    </form>
+{% endif %}
+
 
 <a href="/blog/details/{{post.id}}">
 
