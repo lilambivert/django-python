@@ -1,0 +1,7 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+    {% for bookz in books %}
+		<h3><a href="/bookz/purchase/{{bookz.id}}">Title: {{bookz.book}}</a></h3>
+    Price: {{bookz.price}} <br>
+  	{% endfor %}
+{% endblock %}

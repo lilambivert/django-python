@@ -1,0 +1,17 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>git gud</title>
+	</head>
+	<body>
+    <h1>Login</h1>
+  	<form class="site-form" action="/bookz/login/" method="post">
+  		{{ form }}
+  		{% csrf_token %}
+  		<input type="submit" value="Login">
+  	</form>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>git gud</title>
+	</head>
+	<body>
+    <div class="book_detail">
+    	<div class="bookz">
+    		<h2>Title:{{book.book}}</h2>
+    		<p>Price: {{book.price}}</p>
+        <p>Buyer: {{user.username}}</p>
+        <form action="." method="post">
+              {{ form.as_p }}
+      				{% csrf_token %}
+        <p><input type="submit" value="Purchase!"></p>
+    	</div>
+    </div>
+	</body>
+</html>
