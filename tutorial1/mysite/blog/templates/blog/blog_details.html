@@ -1,17 +1,17 @@
-{% load staticfiles %}
+{% extends 'partials/base_generic.html' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>git gud</title>
-</head>
-<body>
-<header>
+{% block content %}
+
+
 <div class="blog_detail">
 	<div class="blog">
-		<h2>Title:{{blog.title}}</h2>
-		<p>Auhor:{{blog.author}}</p>
+
+		{% if user == blog.author %}
+		<button type="button">Click Me!</button>
+		{% endif %}
+
+		<h2>Title -> {{blog.title}}</h2>
+		<p>Author: {{blog.author}}</p>
 		<p>Text: {{blog.body}}</p>
 	</div>
 </div>
@@ -41,6 +41,4 @@
 
 
 <a href="/blog/details/{{post.id}}">
-
-</body>
-</html>
+{% endblock %}

@@ -1,3 +1,0 @@
-Having some problems with the logout_view in the accounts/views.py
-
-Insted of redirecting correctly it adds the URL ontop of the already existing URL.

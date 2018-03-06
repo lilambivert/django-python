@@ -1,5 +1,4 @@
-#from django import forms
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .models import Post, Comment
@@ -16,30 +15,24 @@ def post_list(request):
 
     return render(request, 'blog/base2.html', context)
 
-@login_required
+@login_required(login_url="/accounts/login/")
 def create_blog(request):
     if(request.method == 'POST'):
-        title = request.POST['title']
-        author = request.POST['author']
-        body = request.POST['body']
-        q = User.objects.get(id=int(author))
-        post = Post(title=title, author=q, body=body)
-        post.save()
-
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
         return redirect('/blog/post')
     else:
-        userslist = User.objects.all()
-        users = {
-            'users':userslist
-        }
-
-        return render(request, 'blog/blogpost.html', users)
+        form = PostForm()
+    return render(request, 'blog/blogpost.html', {'form':form})
 
 def blog_detail(request, id):
     blog = Post.objects.get(id=id)
     comments = Comment.objects.filter(blog=blog)
-
     post = get_object_or_404(Post, id=id)
+    print blog.author
     if(request.method == 'POST'):
         formz = CommentForm(request.POST)
         if formz.is_valid():
@@ -47,7 +40,7 @@ def blog_detail(request, id):
             comment.blog = blog
             comment.post = request.user.get_username()
             comment.save()
-            return redirect('blog/post')
+            return redirect('/blog/post')
     else:
         formz = CommentForm()
     return render(request, 'blog/blog_details.html', {'blog':blog, 'comments':comments, 'formz' : formz})

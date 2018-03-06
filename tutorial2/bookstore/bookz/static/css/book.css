@@ -13,7 +13,7 @@ h4 {
 }
 
 button {
-    background-color: #81BEF7; /* Blue of some sort */
+    background-color: #81BEF7; /* Light Blue*/
     border: none;
     color: grey;
     padding: 8px 26px;
@@ -21,4 +21,14 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: #FFFFFF /* White */
+}
+
+#home {
+  text-decoration: none;
+  color: #FFFFFF
 }

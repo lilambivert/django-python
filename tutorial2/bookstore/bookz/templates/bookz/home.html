@@ -1,7 +1,9 @@
 {% extends 'partials/base.html' %}
 {% block content %}
+<div id = "home">
     {% for bookz in books %}
 		<h3><a href="/bookz/purchase/{{bookz.id}}">Title: {{bookz.book}}</a></h3>
     Price: {{bookz.price}} <br>
   	{% endfor %}
+</div>
 {% endblock %}

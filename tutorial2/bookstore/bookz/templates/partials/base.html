@@ -13,12 +13,10 @@
   <ul>
     {% if user.is_authenticated %}
     <h3> Welcome {{user.get_username}}! </h3>
-    <li>
       <form class="logout-link" action="/bookz/logout/" method="post">
 				{% csrf_token %}
 				<button type="submit">Logout</button>
 			</form>
-		</li>
 		{% else %}
 			<li><a href="/bookz/login/">Login</a></li>
 			<li><a href="/bookz/signup/">Signup</a></li>
