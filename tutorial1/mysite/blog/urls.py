@@ -7,4 +7,5 @@ urlpatterns = [
 	url(r'post$',views.post_list, name='blog_post'),
 	url(r'create_blog$',views.create_blog, name='create_blog'),
 	url(r'details/(?P<id>[0-9]+)/$', views.blog_detail, name="blog_detail"),
+	url(r'edit/(?P<id>[0-9]+)/$', views.edit_post, name="edit_post")
 ]

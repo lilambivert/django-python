@@ -6,8 +6,11 @@
 <div class="blog_detail">
 	<div class="blog">
 
-		{% if user == blog.author %}
-		<button type="button">Click Me!</button>
+		{% if request.user == blog.author %}
+		            <form class="edit-link" action="{% url 'edit_post' id=blog.id %}" method="post">
+		                {% csrf_token %}
+		                <button type="submit">Edit</button>
+		            </form>
 		{% endif %}
 
 		<h2>Title -> {{blog.title}}</h2>

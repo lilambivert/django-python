@@ -32,7 +32,7 @@ def blog_detail(request, id):
     blog = Post.objects.get(id=id)
     comments = Comment.objects.filter(blog=blog)
     post = get_object_or_404(Post, id=id)
-    print blog.author
+#    print blog.author
     if(request.method == 'POST'):
         formz = CommentForm(request.POST)
         if formz.is_valid():
@@ -44,3 +44,16 @@ def blog_detail(request, id):
     else:
         formz = CommentForm()
     return render(request, 'blog/blog_details.html', {'blog':blog, 'comments':comments, 'formz' : formz})
+
+def edit_post(request, id):
+    post = get_object_or_404(Post, id=id)
+    if (request.method == 'POST'):
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('/blog/post', id=post.id)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form})
